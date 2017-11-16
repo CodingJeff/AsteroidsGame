@@ -12,7 +12,7 @@ public void setup()
   {
     aBunch[i]= new Stars();
   }
-  rocks= new Asteroid[200];
+  rocks= new Asteroid[150];
   for (int i =0; i < rocks.length; i++)
   {
     rocks[i]= new Asteroid();

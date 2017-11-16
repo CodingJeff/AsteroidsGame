@@ -13,7 +13,11 @@ myCenterY=(int)Math.random()*1000;
 myDirectionX=Math.random()*5-2;
 myDirectionY=Math.random()*5-2;
 myPointDirection=0;
-rotateSpeed= (int)(Math.random()*7)-3;
+rotateSpeed= (int)(Math.random()*8)+1;
+	}
+	public void move() {
+		turn(rotateSpeed);
+		super.move();
 	}
 	public void setX(int x) {myCenterX=x;}
 	public int getX() {return (int)myCenterX;}
