@@ -1,7 +1,7 @@
 //your variable declarations here
 Spaceship Jeff = new Spaceship();
 Stars [] aBunch;
-Asteroid [] rocks;
+ArrayList <Asteroid> rocks= new ArrayList<Asteroid>();
 public void setup() 
 {
   size(1000,1000);
@@ -12,10 +12,10 @@ public void setup()
   {
     aBunch[i]= new Stars();
   }
-  rocks= new Asteroid[150];
-  for (int i =0; i < rocks.length; i++)
+
+  for (int i =0; i < 50; i++)
   {
-    rocks[i]= new Asteroid();
+    rocks.add(new Asteroid());
   }
 }
 public void draw() 
@@ -26,10 +26,14 @@ public void draw()
   {
     aBunch[i].show();
   }
-  for (int i = 0; i < rocks.length; i++)
+  for (int i = 0; i < rocks.size(); i++)
   {
-    rocks[i].show();
-    rocks[i].move();
+    rocks.get(i).show();
+    rocks.get(i).move();
+    if (dist(Jeff.getX(),Jeff.getY(),rocks.get(i).getX(),rocks.get(i).getY() )< 200)
+    {
+      rocks.remove(i);
+    }
   }
   Jeff.show();
   Jeff.move();
