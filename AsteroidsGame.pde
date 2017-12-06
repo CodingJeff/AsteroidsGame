@@ -30,7 +30,7 @@ public void draw()
   {
     rocks.get(i).show();
     rocks.get(i).move();
-    if (dist(Jeff.getX(),Jeff.getY(),rocks.get(i).getX(),rocks.get(i).getY() )< 200)
+    if (dist(Jeff.getX(),Jeff.getY(),rocks.get(i).getX(),rocks.get(i).getY() )< 25)
     {
       rocks.remove(i);
     }
