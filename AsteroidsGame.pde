@@ -1,44 +1,55 @@
-//your variable declarations here
+Asteroid [] many;
 Spaceship Jeff = new Spaceship();
 Stars [] aBunch;
 ArrayList <Asteroid> rocks= new ArrayList<Asteroid>();
+ArrayList <Bullet> shots= new ArrayList<Bullet>();
 public void setup() 
 {
   size(1000,1000);
-  background(0);
-  aBunch=new Stars[400];
-
-  for (int i = 0; i < aBunch.length; i++)
+  aBunch = new Stars[200];
+  for(int i = 0; i < aBunch.length; i++)
   {
-    aBunch[i]= new Stars();
+    aBunch[i] = new Stars();
   }
-
-  for (int i =0; i < 50; i++)
+  for(int i = 0; i < 50; i++)
   {
     rocks.add(new Asteroid());
   }
 }
-public void draw() 
+public void draw()
 {
   background(0);
-  
-  for (int i = 0; i < aBunch.length; i++)
+   for (int i = 0; i < aBunch.length; i++)
   {
     aBunch[i].show();
   }
-  for (int i = 0; i < rocks.size(); i++)
-  {
+   for (int i = 0; i < rocks.size(); i++)
+   {
     rocks.get(i).show();
     rocks.get(i).move();
-    if (dist(Jeff.getX(),Jeff.getY(),rocks.get(i).getX(),rocks.get(i).getY() )< 25)
-    {
-      rocks.remove(i);
+      if(dist(Jeff.getX(),Jeff.getY(),rocks.get(i).getX(),rocks.get(i).getY()) <= 30)
+      {
+        rocks.remove(i);
+      }
     }
-  }
-  Jeff.show();
-  Jeff.move();
-
+    for(int i = 0; i < shots.size(); i++)
+    {
+  shots.get(i).show();
+  shots.get(i).move();
+for(int j = 0; j < rocks.size(); j++)
+{
+  if(dist(shots.get(i).getX(),shots.get(i).getY(),rocks.get(j).getX(),rocks.get(j).getY())<15)
+{
+  rocks.remove(i);
+  shots.remove(i);
+  break;
 }
+}
+}
+Jeff.show();
+Jeff.move();
+}
+
 public void keyTyped()
 {
   if(key == 'w')
@@ -63,5 +74,9 @@ public void keyPressed()
     Jeff.setDirectionX(0);
     Jeff.setDirectionY(0);
     Jeff.setPointDirection((int)(Math.random()*360));
+  }
+  if (key== 'r')
+  {
+    shots.add(new Bullet(Jeff));
   }
 }
